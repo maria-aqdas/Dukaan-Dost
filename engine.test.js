@@ -1,0 +1,11 @@
+const assert = require("assert");
+const E = require("../public/engine.js");
+const rows = E.makeSample(Date.UTC(2026, 9, 16));
+const S = E.buildSeries(E.parseCSV(E.toCSV(rows)).rows);
+assert.strictEqual(S.products.length, 9);
+const b = E.backtest(S, 3, 2);
+assert(b.model.fillRate > b.base.fillRate, "model should serve more demand than the old rule");
+assert(b.model.stockDays < b.base.stockDays, "model should have fewer stockout days");
+assert.throws(() => E.buildSeries(E.parseCSV("date,product,units_sold\n2026-10-01,A,3\n2026-10-02,A,4\n").rows), /42 days/);
+assert.throws(() => E.parseCSV("a,b,c\n1,2,3"), /columns/);
+console.log("engine tests passed");

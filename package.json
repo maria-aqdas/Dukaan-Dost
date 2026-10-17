@@ -1,0 +1,9 @@
+{
+  "name": "dukaan-dost",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stock forecasting and restock helper for kiryana shops (AMD Developer Hackathon ACT III)",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node test/engine.test.js" }
+}
