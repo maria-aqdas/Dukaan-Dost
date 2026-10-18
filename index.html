@@ -10,186 +10,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --maroon:#5a1215; --maroon-deep:#3d0d0f; --gold:#c9a961; --gold-deep:#8a6d2f;
-  --cream:#efe4cf; --paper:#faf7f2; --ink:#2a1517; --muted:#6f5d5a; --line:#ddd0b8;
-  --red:#b3261e; --amber:#a8650f; --green:#3f7d2c;
+  --maroon:#5a1215; --maroon-deep:#3d0d0f; --gold:#e0bf6a; --gold-deep:#8a6d2f;
+  --cream:#efe4cf; --paper:#faf7f2; --ink:#2a1517; --muted:#5f4e4b; --line:#ddd0b8;
+  --red:#a8201a; --amber:#8f5200; --green:#2f6b1f;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
 h1,h2,h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.02em;margin:0}
-a{color:var(--maroon)}
 :focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
 
-/* top bar + hero */
-.top{background:var(--maroon-deep);color:var(--gold);font-size:13px;text-align:center;padding:6px 12px}
-.hero{background:var(--maroon);color:var(--cream);position:relative;padding:34px 0 120px}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:46px}
-.brand{font-family:"Bebas Neue";font-size:34px;letter-spacing:.03em;color:var(--cream)}
+.top{background:var(--maroon-deep);color:#ecd48f;font-size:13px;text-align:center;padding:7px 12px}
+.hero{background:var(--maroon);color:#fff5e0;padding:28px 0 64px;border-bottom:6px solid var(--gold)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:40px}
+.brand{font-family:"Bebas Neue";font-size:34px;letter-spacing:.03em}
 .brand b{color:var(--gold);font-weight:400}
-.nav nav{display:flex;gap:22px;font-family:"Bebas Neue";font-size:20px;letter-spacing:.04em}
-.nav nav a{color:var(--cream);text-decoration:none}
+.nav nav{display:flex;gap:26px;font-family:"Bebas Neue";font-size:20px;letter-spacing:.05em}
+.nav nav a{color:#fff5e0;text-decoration:none}
 .nav nav a:hover{color:var(--gold)}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
-.hero h1{font-size:clamp(46px,8vw,92px);line-height:.95;color:#f5ebd6}
-.hero p.sub{font-size:18px;max-width:560px;color:#e5d6b9;margin:18px 0 26px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,6.2vw,78px);line-height:1;color:#fff5e0;max-width:13ch}
+.hero p.sub{font-size:18px;max-width:54ch;color:#f7eedb;margin:20px 0 28px}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{font-family:"Bebas Neue";font-size:22px;letter-spacing:.08em;padding:12px 26px;border-radius:3px;border:2px solid var(--gold);cursor:pointer;background:none;color:var(--gold);transition:background .15s,color .15s}
-.btn.solid{background:var(--gold);color:var(--maroon-deep)}
-.btn:hover{background:#dcc07d;color:var(--maroon-deep)}
-.btn.dark{border-color:var(--maroon);color:var(--maroon)}
-.btn.dark:hover{background:var(--maroon);color:var(--cream)}
-.btn.dark.solid{background:var(--maroon);color:var(--cream)}
+.btn{font-family:"Bebas Neue";font-size:22px;letter-spacing:.08em;padding:11px 26px;border-radius:6px;border:2px solid #fff5e0;cursor:pointer;background:rgba(255,255,255,.08);color:#fff5e0;transition:background .15s,color .15s;display:inline-flex;align-items:center;gap:10px}
+.btn:hover{background:#fff5e0;color:var(--maroon-deep)}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:var(--maroon-deep)}
+.btn.solid:hover{background:#f0d58a;border-color:#f0d58a}
+.btn.dark{border-color:var(--maroon);color:var(--maroon);background:transparent}
+.btn.dark:hover{background:var(--maroon);color:#fff5e0}
+.btn.dark.solid{background:var(--maroon);color:#fff5e0}
 .btn.dark.solid:hover{background:var(--maroon-deep)}
-.btn[disabled]{opacity:.5;cursor:wait}
-#tree{width:100%;max-width:340px;justify-self:center}
-.tear{position:absolute;left:0;right:0;bottom:-1px;height:60px;display:block}
+.btn[disabled]{opacity:.7;cursor:wait}
+#tree{width:100%;max-width:290px;justify-self:end}
 
-/* sections */
-main{padding-bottom:40px}
-.card{background:var(--paper);border-radius:22px;padding:26px;box-shadow:0 14px 36px rgba(60,20,10,.12);margin-bottom:26px}
+main{padding:30px 24px 40px}
+.card{background:var(--paper);border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(60,20,10,.10);margin-bottom:26px}
 .card h2{font-size:34px;color:var(--maroon);margin-bottom:6px}
-.lead{color:var(--muted);margin:0 0 18px;max-width:70ch}
-.controls{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
-.field label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
-.field input[type=number]{width:96px;padding:9px 10px;border:2px solid #cdbfd9;border-radius:10px;font:inherit;background:#fff}
-.field small{display:block;color:var(--muted);font-size:12px;margin-top:3px;max-width:200px}
-.seg{display:inline-flex;border:2px solid var(--maroon);border-radius:10px;overflow:hidden}
-.seg button{border:0;background:#fff;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer;color:var(--maroon)}
-.seg button[aria-pressed=true]{background:var(--maroon);color:var(--cream)}
+.lead{color:var(--muted);margin:0 0 18px;max-width:72ch}
+
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.ctl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:190px}
+.ctl label,.ctl .lbl{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.inwrap{display:flex;align-items:center;border:2px solid #b9a98a;border-radius:8px;background:#fff;overflow:hidden;width:132px}
+.inwrap:focus-within{border-color:var(--maroon)}
+.inwrap input{border:0;outline:0;width:64px;padding:8px 10px;font:inherit;font-weight:600;background:transparent}
+.inwrap span{margin-left:auto;background:#f1e6cc;color:var(--muted);font-size:13px;padding:9px 10px;align-self:stretch;display:flex;align-items:center}
+.ctl small{display:block;color:var(--muted);font-size:12px;margin-top:6px;max-width:190px}
+.seg{display:inline-flex;border:2px solid var(--maroon);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;color:var(--maroon)}
+.seg button[aria-pressed=true]{background:var(--maroon);color:#fff5e0}
 .msg{margin-top:14px;padding:10px 14px;border-radius:10px;font-size:14px}
 .msg.err{background:#fbe9e7;color:#7a1b13;border:1px solid #efc2bc}
 .msg.ok{background:#eef5e8;color:#2c5a1d;border:1px solid #cfe2c3}
-.empty{border:2px dashed var(--line);border-radius:16px;padding:34px;text-align:center;color:var(--muted)}
-.hidden{display:none!important}
+.empty{border:2px dashed #cdbd9b;border-radius:16px;padding:34px;text-align:center;color:var(--muted);background:var(--paper);margin-bottom:26px}
 
-/* backtest */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stat{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
 .stat .k{font-size:13px;color:var(--muted)}
 .stat .v{font-family:"Bebas Neue";font-size:40px;line-height:1.1;color:var(--maroon)}
-.stat .c{font-size:13px;color:var(--ink)}
+.stat .c{font-size:13px}
 .stat .c b{color:var(--green)}
 .note{font-size:13px;color:var(--muted);margin-top:12px;max-width:80ch}
 
-/* table */
 .tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:640px}
+table{border-collapse:collapse;width:100%;min-width:680px}
 th{font-size:13px;text-align:left;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:2px solid var(--line)}
 td{padding:10px;border-bottom:1px solid var(--line);font-size:15px}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 tbody tr{cursor:pointer}
 tbody tr:hover{background:#f6efe1}
 tbody tr[aria-selected=true]{background:#f1e6cc}
-td input{width:70px;padding:6px 8px;border:2px solid #cdbfd9;border-radius:8px;font:inherit;text-align:right;background:#fff}
-.chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600}
+.step{display:inline-flex;align-items:stretch;border:2px solid #b9a98a;border-radius:8px;background:#fff;overflow:hidden}
+.step:focus-within{border-color:var(--maroon)}
+.step button{border:0;background:#f1e6cc;color:var(--maroon);width:28px;font-size:18px;font-weight:700;cursor:pointer;line-height:1}
+.step button:hover{background:#e6d6ad}
+.step input{width:56px;border:0;outline:0;text-align:center;font:inherit;font-weight:600;padding:6px 2px;-moz-appearance:textfield;background:#fff}
+.step input::-webkit-outer-spin-button,.step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:99px;font-size:13px;font-weight:600;white-space:nowrap}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 .chip.order_now{background:#fbe1de;color:var(--red)}
 .chip.order_soon{background:#fbecd2;color:var(--amber)}
 .chip.ok{background:#e3f0da;color:var(--green)}
-.chartbox{margin-top:22px}
+.none{color:var(--muted);font-size:13px}
+.chartbox{margin-top:24px}
 .chartbox h3{font-size:26px;color:var(--maroon)}
 svg.chart{width:100%;height:auto;display:block}
 .legend{display:flex;gap:18px;font-size:13px;color:var(--muted);margin-top:6px;flex-wrap:wrap}
 .legend i{display:inline-block;width:18px;height:4px;vertical-align:middle;margin-right:6px;border-radius:2px}
 
-/* AI */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;white-space:pre-wrap;font-size:15px}
 .box h3{font-size:22px;color:var(--maroon);margin-bottom:6px}
+.aiempty{margin-top:18px;border:2px dashed #cdbd9b;border-radius:14px;padding:26px;text-align:center;color:var(--muted);background:#fff}
 .src{font-size:13px;margin-top:12px;color:var(--muted)}
 .src.ai{color:var(--green)}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.row .btn{font-size:18px;padding:8px 18px}
+.row .btn{font-size:18px;padding:7px 18px;text-decoration:none}
+.spin{width:16px;height:16px;border:3px solid rgba(255,245,224,.4);border-top-color:#fff5e0;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
 
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .how div{border-left:4px solid var(--gold);padding:2px 0 2px 14px}
 .how h3{font-size:24px;color:var(--maroon)}
 .how p{margin:4px 0 0;font-size:15px}
-footer{background:var(--maroon-deep);color:#d9c9a8;padding:30px 0;font-size:14px}
+footer{background:var(--maroon-deep);color:#e6d6b4;padding:30px 0;font-size:14px}
 footer b{color:var(--gold)}
 
-@media (max-width:820px){
-  .hero-grid{grid-template-columns:1fr}
-  #tree{max-width:240px}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  #tree{max-width:200px;justify-self:start}
   .nav nav{display:none}
   .stats{grid-template-columns:1fr 1fr}
   .two,.how{grid-template-columns:1fr}
-  .hero{padding-bottom:90px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.spin{animation-duration:2s}}
 </style>
 </head>
 <body>
-<div class="top">Built for the AMD Developer Hackathon ACT III, Commerce track</div>
+<div class="top" data-i="top"></div>
 
 <header class="hero">
   <div class="wrap">
     <div class="nav">
       <div class="brand">Dukaan <b>Dost</b></div>
-      <nav aria-label="Sections"><a href="#shop">My shop</a><a href="#how">How it works</a><a href="#limits">Limits</a></nav>
+      <nav aria-label="Sections"><a href="#shop" data-i="navShop"></a><a href="#how" data-i="navHow"></a><a href="#limits" data-i="navLim"></a></nav>
     </div>
     <div class="hero-grid">
       <div>
-        <h1>Kal kya khatam hoga, aaj pata chale</h1>
-        <p class="sub">Upload your daily sales. Dukaan Dost forecasts the next 7 days, flags what will run out before your next delivery, and drafts the message for your supplier.</p>
+        <h1 data-i="h1"></h1>
+        <p class="sub" data-i="sub"></p>
         <div class="btns">
-          <button class="btn solid" id="loadSample">Load sample shop</button>
-          <button class="btn" id="pickFile">Upload sales CSV</button>
+          <button class="btn solid" id="loadSample" data-i="loadSample"></button>
+          <button class="btn" id="pickFile" data-i="upload"></button>
           <input type="file" id="file" accept=".csv,text/csv" class="hidden">
         </div>
       </div>
-      <svg id="tree" viewBox="0 0 400 400" role="img" aria-label="A tree whose leaves are colourful"></svg>
+      <svg id="tree" viewBox="0 0 400 400" role="img" aria-label="A tree with colourful leaves"></svg>
     </div>
   </div>
-  <svg class="tear" id="tear" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"></svg>
 </header>
 
 <main class="wrap" id="shop">
   <section class="card" aria-labelledby="h-setup">
-    <h2 id="h-setup">Your shop</h2>
-    <p class="lead">Load the sample shop to try it, or upload a CSV with three columns: <b>date, product, units_sold</b> (at least 6 weeks of daily sales). Days with no row count as zero sales.</p>
+    <h2 id="h-setup" data-i="hShop"></h2>
+    <p class="lead" data-i="shopLead"></p>
     <div class="controls">
-      <div class="field"><label for="lead">Delivery takes (days)</label><input type="number" id="lead" min="1" max="7" value="2"><small>Time from calling the supplier to stock arriving.</small></div>
-      <div class="field"><label for="rev">Supplier visits every (days)</label><input type="number" id="rev" min="1" max="7" value="3"><small>How often you place an order.</small></div>
-      <div class="field"><span style="display:block;font-size:14px;font-weight:600;margin-bottom:4px">Explain in</span>
-        <div class="seg" role="group" aria-label="Language"><button id="lu" aria-pressed="true">Roman Urdu</button><button id="le" aria-pressed="false">English</button></div></div>
-      <button class="btn dark" id="dlSample">Download sample CSV</button>
+      <div class="ctl"><label for="lead" data-i="lblLead"></label><div class="inwrap"><input type="number" id="lead" min="1" max="7" value="2"><span data-i="days"></span></div><small data-i="hintLead"></small></div>
+      <div class="ctl"><label for="rev" data-i="lblRev"></label><div class="inwrap"><input type="number" id="rev" min="1" max="7" value="3"><span data-i="days"></span></div><small data-i="hintRev"></small></div>
+      <div class="ctl"><span class="lbl" data-i="lblLang"></span>
+        <div class="seg" role="group" aria-label="Language"><button id="lu" aria-pressed="false">Roman Urdu</button><button id="le" aria-pressed="true">English</button></div></div>
+      <div class="ctl" style="display:flex;align-items:center"><button class="btn dark" id="dlSample" data-i="dl"></button></div>
     </div>
     <div id="status" class="msg hidden" role="status"></div>
   </section>
 
-  <div id="empty" class="empty card">No sales loaded yet. Press <b>Load sample shop</b> at the top to see a forecast in a few seconds.</div>
+  <div id="empty" class="empty" data-i="empty"></div>
 
   <div id="app" class="hidden">
     <section class="card" aria-labelledby="h-test">
-      <h2 id="h-test">Would it have worked? A 28-day test</h2>
-      <p class="lead">We hid your last 28 days, forecast them day by day, and replayed a restocking game: the same supplier visits and delivery time for both rules. Nothing here was tuned on those days.</p>
+      <h2 id="h-test" data-i="hTest"></h2>
+      <p class="lead" data-i="testLead"></p>
       <div class="stats" id="stats"></div>
       <p class="note" id="btnote"></p>
     </section>
 
     <section class="card" aria-labelledby="h-fc">
-      <h2 id="h-fc">What to order today</h2>
-      <p class="lead">Change "In stock" to what is on your shelf right now. Click a row to see its chart.</p>
+      <h2 id="h-fc" data-i="hFc"></h2>
+      <p class="lead" data-i="fcLead"></p>
       <div class="tbl"><table>
-        <thead><tr><th>Product</th><th class="num">In stock</th><th class="num">Lasts (days)</th><th class="num">Next 7 days</th><th class="num">Order</th><th>Status</th></tr></thead>
+        <thead><tr><th data-i="thProd"></th><th class="num" data-i="thStock"></th><th class="num" data-i="thLasts"></th><th class="num" data-i="thNext"></th><th class="num" data-i="thOrder"></th><th data-i="thStatus"></th></tr></thead>
         <tbody id="rows"></tbody>
       </table></div>
-      <div class="chartbox"><h3 id="chartTitle"></h3><svg class="chart" id="chart" viewBox="0 0 680 260" role="img"></svg>
-        <div class="legend"><span><i style="background:var(--maroon)"></i>Sold (last 28 days)</span><span><i style="background:var(--gold-deep)"></i>Forecast (next 7 days)</span><span><i style="background:#e3d2a2"></i>Likely range</span></div></div>
+      <div class="chartbox"><h3 id="chartTitle"></h3><svg class="chart" id="chart" viewBox="0 0 680 270" role="img"></svg>
+        <div class="legend"><span><i style="background:var(--maroon)"></i><span data-i="lgSold"></span></span><span><i style="background:var(--gold-deep)"></i><span data-i="lgFc"></span></span><span><i style="background:#e3d2a2"></i><span data-i="lgRange"></span></span></div></div>
     </section>
 
     <section class="card" aria-labelledby="h-ai">
-      <h2 id="h-ai">Explain it and write to my supplier</h2>
-      <p class="lead">The numbers above come from code. The AI only puts them into words, and its draft is blocked if it uses any number that is not in your data.</p>
-      <div class="btns"><button class="btn dark solid" id="explain">Explain and draft message</button></div>
+      <h2 id="h-ai" data-i="hAi"></h2>
+      <p class="lead" data-i="aiLead"></p>
+      <div class="btns"><button class="btn dark solid" id="explain"></button></div>
+      <div id="aiEmpty" class="aiempty" data-i="aiEmpty"></div>
       <div id="aiOut" class="hidden">
         <div class="two">
-          <div class="box"><h3>Samajh lo</h3><div id="exp"></div></div>
-          <div class="box"><h3>Supplier message</h3><div id="sup"></div>
-            <div class="row"><button class="btn dark" id="copy">Copy message</button><a class="btn dark" id="wa" target="_blank" rel="noopener" style="text-decoration:none">Open WhatsApp</a></div></div>
+          <div class="box"><h3 data-i="boxExp"></h3><div id="exp"></div></div>
+          <div class="box"><h3 data-i="boxSup"></h3><div id="sup"></div>
+            <div class="row"><button class="btn dark" id="copy"></button><a class="btn dark" id="wa" target="_blank" rel="noopener" data-i="wa"></a></div></div>
         </div>
         <div class="src" id="src"></div>
       </div>
@@ -197,154 +204,236 @@ footer b{color:var(--gold)}
   </div>
 
   <section class="card" id="how" aria-labelledby="h-how">
-    <h2 id="h-how">How it works</h2>
+    <h2 id="h-how" data-i="hHow"></h2>
     <div class="how">
-      <div><h3>Code forecasts</h3><p>Each product gets a weekday pattern (Fridays and weekends sell more) and a smoothed level. The forecast for a day is level times that weekday's factor.</p></div>
-      <div><h3>Code decides</h3><p>Safety stock covers normal ups and downs. If stock will not last until a delivery could arrive, the product is flagged and a quantity is suggested.</p></div>
-      <div><h3>AI explains</h3><p>An open model on AMD Token Factory writes the explanation and the supplier message. A checker rejects any draft with numbers that are not in the data.</p></div>
+      <div><h3 data-i="c1t"></h3><p data-i="c1"></p></div>
+      <div><h3 data-i="c2t"></h3><p data-i="c2"></p></div>
+      <div><h3 data-i="c3t"></h3><p data-i="c3"></p></div>
     </div>
   </section>
 
   <section class="card" id="limits" aria-labelledby="h-lim">
-    <h2 id="h-lim">What this does not do</h2>
-    <p class="lead" style="margin-bottom:6px">The sample shop is synthetic, so the 28-day test shows the method works on realistic data, not that it will save your shop a specific amount. Test it on your own ledger before relying on it.</p>
-    <p class="lead" style="margin-bottom:6px">It does not know about festivals, price changes, or shortages at your supplier. Salary-week and Ramadan jumps will be under-forecast at first.</p>
-    <p class="lead" style="margin:0">Fewer stockouts usually means holding more stock. The test shows both, so you can judge the trade-off.</p>
+    <h2 id="h-lim" data-i="hLim"></h2>
+    <p class="lead" style="margin-bottom:6px" data-i="l1"></p>
+    <p class="lead" style="margin-bottom:6px" data-i="l2"></p>
+    <p class="lead" style="margin:0" data-i="l3"></p>
   </section>
 </main>
 
-<footer><div class="wrap"><b>Dukaan Dost</b>. Forecasts are estimates, not guarantees. Sample data is synthetic. Explanations are written by an AI model served on AMD Token Factory when configured.</div></footer>
+<footer><div class="wrap"><b>Dukaan Dost</b>. <span data-i="foot"></span></div></footer>
 
 <script src="engine.js"></script>
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
-  var S=null, state={L:2,R:3,lang:"roman_urdu",sel:0,recs:[],bt:null,ai:null};
-  var DD=window.DD;
+  var DD=window.DD, S=null, state={L:2,R:3,lang:"english",sel:0,recs:[],bt:null,loaded:null};
 
-  /* decoration: leaf tree + torn paper edge */
+  var T={
+   english:{
+    top:"Built for the AMD Developer Hackathon ACT III, Commerce track",navShop:"My shop",navHow:"How it works",navLim:"Limits",
+    h1:"Know today what will run out tomorrow",
+    sub:"Upload your daily sales. Dukaan Dost forecasts the next 7 days, flags what will run out before your next delivery, and drafts the message for your supplier.",
+    loadSample:"Load sample shop",upload:"Upload sales CSV",hShop:"Your shop",
+    shopLead:"Load the sample shop to try it, or upload a CSV with three columns: <b>date, product, units_sold</b> (at least 6 weeks of daily sales). Days with no row count as zero sales.",
+    lblLead:"Delivery takes",days:"days",hintLead:"Time from calling the supplier to stock arriving.",lblRev:"Supplier visits every",hintRev:"How often you place an order.",lblLang:"Explain in",dl:"Download sample CSV",
+    empty:"No sales loaded yet. Press <b>Load sample shop</b> at the top to see a forecast in a few seconds.",
+    hTest:"Would it have worked? A 28-day test",testLead:"We hid your last 28 days, forecast them day by day, and replayed a restocking game with the same supplier visits and delivery time for both rules. Nothing here was tuned on those days.",
+    sErr:"Forecast error (lower is better)",sErrOld:"Last-7-days average: ",sFill:"Sales you could serve",sOld:"Old rule: ",sDays:"Days a product ran out",sShelf:"Average units on shelf",fewer:"% fewer",more:"% more stock held",
+    note:function(R,L,n,d){return "Old rule = order up to the last 7 days' average sales. Both rules: supplier visit every "+R+" days, delivery in "+L+" days, "+n+" products, "+d+" held-out days. Forecast error is measured one day ahead."},
+    hFc:"What to order today",fcLead:"Change \"In stock\" to what is on your shelf right now. Click a row to see its chart.",
+    thProd:"Product",thStock:"In stock",thLasts:"Lasts (days)",thNext:"Next 7 days",thOrder:"Order",thStatus:"Status",
+    order_now:"Order now",order_soon:"Order soon",ok:"OK",none:"None needed",
+    lgSold:"Sold (last 28 days)",lgFc:"Forecast (next 7 days)",lgRange:"Likely range",yTitle:"Units per day",
+    hAi:"Explain it and write to my supplier",aiLead:"The numbers above come from code. The AI only puts them into words, and its draft is blocked if it uses any number that is not in your data.",
+    btnExplain:"Explain and draft message",writing:"Writing...",aiEmpty:"Press the button above to get a short explanation and a WhatsApp message for your supplier. They will appear here.",
+    boxExp:"Explanation",boxSup:"Supplier message",copy:"Copy message",copied:"Copied",copyFail:"Select and copy manually",wa:"Open WhatsApp",
+    aiSrc:function(m,s,t){return "Written by "+m+" on AMD Token Factory, "+s+" s"+(t?", "+t+" tokens":"")+". Every number was checked against your data."},
+    nothing:"Nothing to order right now.",
+    loaded:function(n,d,sm,sk){return "Loaded "+n+" products over "+d+" days"+(sm?" (synthetic sample shop).":".")+(sk?" Skipped "+sk+" unreadable rows.":"")},
+    big:"That file is over 5 MB. Please upload a smaller CSV.",
+    hHow:"How it works",c1t:"Code forecasts",c1:"Each product gets a weekday pattern (Fridays and weekends sell more) and a smoothed level. The forecast for a day is level times that weekday's factor.",
+    c2t:"Code decides",c2:"Safety stock covers normal ups and downs. If stock will not last until a delivery could arrive, the product is flagged and a quantity is suggested.",
+    c3t:"AI explains",c3:"An open model on AMD Token Factory writes the explanation and the supplier message. A checker rejects any draft with numbers that are not in the data.",
+    hLim:"What this does not do",
+    l1:"The sample shop is synthetic, so the 28-day test shows the method works on realistic data, not that it will save your shop a specific amount. Test it on your own ledger before relying on it.",
+    l2:"It does not know about festivals, price changes, or shortages at your supplier. Salary-week and Ramadan jumps will be under-forecast at first.",
+    l3:"Fewer stockouts usually means holding more stock. The test shows both, so you can judge the trade-off.",
+    foot:"Forecasts are estimates, not guarantees. Sample data is synthetic. Explanations are written by an AI model served on AMD Token Factory when configured.",
+    tmplOk:"Everything looks fine for now. Stock should last until your next supplier visit. This is an estimate only.",tmplHead:"Order these first (this is an estimate only):\n",
+    tmplLine:function(r,n){return "- "+n+": "+r.stock+" left, lasts "+(r.coverCapped?"14+":r.cover)+" days, order "+r.qty},
+    supHead:"Hello, I would like to order:\n",supTail:"\nThank you.",
+    netfail:"Could not reach the server. Showing the built-in template."
+   },
+   roman_urdu:{
+    top:"AMD Developer Hackathon ACT III ke liye banaya gaya, Commerce track",navShop:"Meri dukaan",navHow:"Kaise kaam karta hai",navLim:"Hadood",
+    h1:"Aaj hi jaan lein, kal kya khatam hoga",
+    sub:"Roz ki sales upload karein. Dukaan Dost agle 7 din ka andaza lagata hai, bata deta hai ke delivery aane se pehle kya khatam ho jayega, aur supplier ke liye message tayyar kar deta hai.",
+    loadSample:"Sample dukaan kholein",upload:"Sales CSV upload karein",hShop:"Aap ki dukaan",
+    shopLead:"Sample dukaan kholein ya apni CSV upload karein jis mein 3 columns hon: <b>date, product, units_sold</b> (kam az kam 6 hafte ki roz ki sales). Jis din ki row na ho, wahan sales zero maani jati hai.",
+    lblLead:"Delivery mein lagta hai",days:"din",hintLead:"Supplier ko call se maal pahunchne tak ka waqt.",lblRev:"Supplier har",hintRev:"Aap kitne din baad order dete hain.",lblLang:"Samjhana hai",dl:"Sample CSV download karein",
+    empty:"Abhi koi sales load nahi hui. Upar <b>Sample dukaan kholein</b> dabayen, chand second mein andaza nazar aa jayega.",
+    hTest:"Kya ye kaam karta? 28 din ka test",testLead:"Humne aap ke aakhri 28 din chupa diye, un ka din ba din andaza lagaya, aur dono usoolon ke liye wohi supplier visit aur delivery time rakh kar stock ka khel dobara chalaya. In dinon par kuch tune nahi kiya gaya.",
+    sErr:"Andaze ki ghalti (kam behtar hai)",sErrOld:"Pichle 7 din ka average: ",sFill:"Jitni sales poori hui",sOld:"Purana usool: ",sDays:"Kitne din cheez khatam rahi",sShelf:"Shelf par average units",fewer:"% kam",more:"% zyada stock",
+    note:function(R,L,n,d){return "Purana usool = pichle 7 din ki average sales tak order karna. Dono usoolon mein: supplier har "+R+" din, delivery "+L+" din mein, "+n+" cheezein, "+d+" din ka test. Andaza ek din aage ka naapa gaya hai."},
+    hFc:"Aaj kya mangwana hai",fcLead:"\"Stock mein\" mein wo likhein jo abhi shelf par hai. Chart dekhne ke liye row par click karein.",
+    thProd:"Cheez",thStock:"Stock mein",thLasts:"Chalega (din)",thNext:"Agle 7 din",thOrder:"Mangwayen",thStatus:"Halat",
+    order_now:"Abhi mangwayen",order_soon:"Jaldi mangwayen",ok:"Theek hai",none:"Zaroorat nahi",
+    lgSold:"Bika (pichle 28 din)",lgFc:"Andaza (agle 7 din)",lgRange:"Mumkin hadd",yTitle:"Roz ke units",
+    hAi:"Samjhain aur supplier ko likhein",aiLead:"Upar ke numbers code se aate hain. AI sirf unhein alfaaz mein likhta hai, aur agar us ne aisa number likha jo aap ke data mein nahi to draft rok diya jata hai.",
+    btnExplain:"Samjhayen aur message likhein",writing:"Likh raha hai...",aiEmpty:"Upar wala button dabayen, yahan chhota sa explanation aur supplier ke liye WhatsApp message aa jayega.",
+    boxExp:"Samjhaiye",boxSup:"Supplier ke liye message",copy:"Message copy karein",copied:"Copy ho gaya",copyFail:"Khud select karke copy karein",wa:"WhatsApp kholein",
+    aiSrc:function(m,s,t){return m+" ne AMD Token Factory par likha, "+s+" second"+(t?", "+t+" tokens":"")+". Har number aap ke data se check hua."},
+    nothing:"Abhi kuch mangwane ki zaroorat nahi.",
+    loaded:function(n,d,sm,sk){return n+" cheezein, "+d+" din ka data load hua"+(sm?" (banawati sample dukaan).":".")+(sk?" "+sk+" na parhi jane wali rows chhor di gayin.":"")},
+    big:"Ye file 5 MB se bari hai. Chhoti CSV upload karein.",
+    hHow:"Kaise kaam karta hai",c1t:"Code andaza lagata hai",c1:"Har cheez ka hafte ka pattern (Jumma aur weekend par zyada bikri) aur smooth level nikalta hai. Kisi din ka andaza = level ko us din ke factor se zarab.",
+    c2t:"Code faisla karta hai",c2:"Safety stock aam utaar chadhao sambhalta hai. Agar stock delivery aane tak na chale to cheez par nishan lagta hai aur quantity bataai jati hai.",
+    c3t:"AI samjhata hai",c3:"AMD Token Factory par chalne wala open model explanation aur supplier message likhta hai. Jis draft mein data se bahar ka number ho, checker use rok deta hai.",
+    hLim:"Ye kya nahi karta",
+    l1:"Sample dukaan banawati hai, is liye 28 din ka test sirf tareeqa dikhata hai, ye nahi ke aap ki dukaan ko itni bachat hogi. Bharosa karne se pehle apne ledger par try karein.",
+    l2:"Isko festival, qeematon ki tabdeeli ya supplier ki kami ka pata nahi. Tankhwah ke hafte aur Ramzan ki tezi shuru mein kam andaza hogi.",
+    l3:"Kam stockout ka matlab aksar zyada stock rakhna hota hai. Test dono dikhata hai taake aap khud faisla karein.",
+    foot:"Andaze sirf andaze hain, guarantee nahi. Sample data banawati hai. Jab configure ho to explanation AMD Token Factory par chalne wala AI model likhta hai.",
+    tmplOk:"Abhi sab theek hai. Agle supplier visit tak stock chalna chahiye. Ye sirf andaza hai.",tmplHead:"Ye cheezein pehle mangwayen (ye sirf andaza hai):\n",
+    tmplLine:function(r,n){return "- "+n+": "+r.stock+" bacha hai, "+(r.coverCapped?"14+":r.cover)+" din chalega, "+r.qty+" mangwayen"},
+    supHead:"Assalam o Alaikum, mujhe ye saman chahiye:\n",supTail:"\nShukriya.",
+    netfail:"Server tak nahi pahunch saka. Built-in template dikha rahe hain."
+   }
+  };
+  var NAMES_UR={"Milk 1L":"Doodh 1L","Eggs (dozen)":"Anda (darjan)","Yogurt 500g":"Dahi 500g","Tea leaves 190g":"Chai patti 190g","Flour (atta) 10kg":"Atta 10kg","Sugar 1kg":"Cheeni 1kg"};
+  function t(){return T[state.lang]}
+  function dn(n){return state.lang==="roman_urdu"&&NAMES_UR[n]?NAMES_UR[n]:n}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+  /* leaf tree */
   (function(){
     var r=(function(s){return function(){s=(s*16807)%2147483647;return s/2147483647}})(11), cols=["#e8294a","#f5a623","#7cb342","#1fa2b8","#6a3fa0"], out="";
     for(var i=0;i<78;i++){var a=r()*Math.PI*2, d=Math.sqrt(r())*150, x=200+Math.cos(a)*d, y=165+Math.sin(a)*d*.95, rot=a*180/Math.PI+90;
       out+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="7" ry="19" fill="'+cols[i%5]+'" transform="rotate('+rot.toFixed(0)+' '+x.toFixed(1)+' '+y.toFixed(1)+')"/>';}
     out+='<path d="M200 392 C196 340 168 308 118 276 C160 292 188 296 200 284 C212 296 240 292 282 276 C232 308 204 340 200 392Z" fill="#161010"/><circle cx="200" cy="266" r="13" fill="#161010"/>';
     $("#tree").innerHTML=out;
-    var p="M0 60 L0 30",x2=0; while(x2<1200){x2+=14+r()*26; p+=" L"+Math.min(x2,1200).toFixed(0)+" "+(14+r()*24).toFixed(0);} p+=" L1200 60Z";
-    $("#tear").innerHTML='<path d="'+p+'" fill="#efe4cf"/>';
   })();
 
-  function msg(t,cls){var e=$("#status");e.className="msg "+cls;e.textContent=t;}
+  /* language */
+  function applyStatic(){
+    var L=t(); document.documentElement.lang=state.lang==="english"?"en":"ur-Latn";
+    [].forEach.call(document.querySelectorAll("[data-i]"),function(e){var v=L[e.dataset.i]; if(typeof v==="string") e.innerHTML=v;});
+    $("#lu").setAttribute("aria-pressed",state.lang==="roman_urdu");$("#le").setAttribute("aria-pressed",state.lang==="english");
+    if(!$("#explain").disabled) $("#explain").textContent=L.btnExplain;
+    $("#copy").textContent=L.copy;
+  }
+  function setLang(l){
+    if(state.lang===l)return; state.lang=l; applyStatic(); resetAI();
+    if(S){drawStats();drawRows();drawChart();} if(state.loaded) msg(state.loaded(),"ok");
+  }
+  function msg(txt,cls){var e=$("#status");e.className="msg "+cls;e.textContent=txt;}
+
   function load(rows,sample,skipped){
     try{
       S=DD.buildSeries(rows);
       if(sample){var f=[.8,2.5,4,1.5,5,2.2,3.5,1.1,6];S.products.forEach(function(p,i){var avg=p.y.slice(-14).reduce(function(a,b){return a+b},0)/14;p.stock=Math.round(avg*f[i%f.length]);});}
-      state.sel=0;state.ai=null;$("#aiOut").classList.add("hidden");
+      state.sel=0;resetAI();
       $("#empty").classList.add("hidden");$("#app").classList.remove("hidden");
-      msg("Loaded "+S.products.length+" products over "+S.n+" days"+(sample?" (synthetic sample shop).":".")+(skipped?" Skipped "+skipped+" unreadable rows.":""),"ok");
-      recalc(true);
+      var n=S.products.length,d=S.n; state.loaded=function(){return t().loaded(n,d,sample,skipped)};
+      msg(state.loaded(),"ok"); recalc(true);
       $("#shop").scrollIntoView({behavior:"smooth"});
-    }catch(e){msg(e.message,"err");}
-  }
-  function readInputs(){
-    var L=Math.min(7,Math.max(1,parseInt($("#lead").value)||2)), R=Math.min(7,Math.max(1,parseInt($("#rev").value)||3));
-    state.L=L;state.R=R;
+    }catch(e){state.loaded=null;msg(e.message,"err");}
   }
   function recalc(full){
-    if(!S)return; readInputs();
+    if(!S)return;
+    state.L=Math.min(7,Math.max(1,parseInt($("#lead").value)||2)); state.R=Math.min(7,Math.max(1,parseInt($("#rev").value)||3));
     if(full) state.bt=DD.backtest(S,state.R,state.L);
     state.recs=S.products.map(function(p){return DD.recommend(S,p,state.R,state.L)});
     drawStats();drawRows();drawChart();
   }
   function pct(v){return v.toFixed(1)+"%"}
   function drawStats(){
-    var b=state.bt, m=b.model, s=b.base;
+    var L=t(),b=state.bt,m=b.model,s=b.base;
     var cut=s.stockDays?Math.round(100*(s.stockDays-m.stockDays)/s.stockDays):0;
     var extra=s.avgStock?Math.round(100*(m.avgStock-s.avgStock)/s.avgStock):0;
     $("#stats").innerHTML=
-      '<div class="stat"><div class="k">Forecast error (lower is better)</div><div class="v">'+pct(b.wapeModel)+'</div><div class="c">Last-7-days average: '+pct(b.wapeNaive)+'</div></div>'+
-      '<div class="stat"><div class="k">Sales you could serve</div><div class="v">'+pct(m.fillRate)+'</div><div class="c">Old rule: '+pct(s.fillRate)+'</div></div>'+
-      '<div class="stat"><div class="k">Days a product ran out</div><div class="v">'+m.stockDays+'</div><div class="c">Old rule: '+s.stockDays+(cut>0?' (<b>'+cut+'% fewer</b>)':'')+'</div></div>'+
-      '<div class="stat"><div class="k">Average units on shelf</div><div class="v">'+Math.round(m.avgStock)+'</div><div class="c">Old rule: '+Math.round(s.avgStock)+(extra>0?' ('+extra+'% more stock held)':'')+'</div></div>';
-    $("#btnote").textContent="Old rule = order up to the last 7 days' average sales. Both rules: supplier visit every "+state.R+" days, delivery in "+state.L+" days, "+b.products+" products, "+b.days+" held-out days. Forecast error is measured one day ahead.";
+      '<div class="stat"><div class="k">'+L.sErr+'</div><div class="v">'+pct(b.wapeModel)+'</div><div class="c">'+L.sErrOld+pct(b.wapeNaive)+'</div></div>'+
+      '<div class="stat"><div class="k">'+L.sFill+'</div><div class="v">'+pct(m.fillRate)+'</div><div class="c">'+L.sOld+pct(s.fillRate)+'</div></div>'+
+      '<div class="stat"><div class="k">'+L.sDays+'</div><div class="v">'+m.stockDays+'</div><div class="c">'+L.sOld+s.stockDays+(cut>0?' (<b>'+cut+L.fewer+'</b>)':'')+'</div></div>'+
+      '<div class="stat"><div class="k">'+L.sShelf+'</div><div class="v">'+Math.round(m.avgStock)+'</div><div class="c">'+L.sOld+Math.round(s.avgStock)+(extra>0?' ('+extra+L.more+')':'')+'</div></div>';
+    $("#btnote").textContent=L.note(state.R,state.L,b.products,b.days);
   }
-  var LABEL={order_now:"Order now",order_soon:"Order soon",ok:"OK"};
   function drawRows(){
-    var h="";
+    var L=t(),h="";
     state.recs.forEach(function(r,i){
-      h+='<tr data-i="'+i+'" aria-selected="'+(i===state.sel)+'"><td><b>'+esc(r.name)+'</b></td>'+
-        '<td class="num"><input type="number" min="0" value="'+r.stock+'" data-i="'+i+'" aria-label="Stock of '+esc(r.name)+'"></td>'+
+      var nm=esc(dn(r.name));
+      h+='<tr data-i="'+i+'" aria-selected="'+(i===state.sel)+'"><td><b>'+nm+'</b></td>'+
+        '<td class="num"><span class="step"><button type="button" data-act="-" data-i="'+i+'" aria-label="-1 '+nm+'">&minus;</button><input type="number" min="0" value="'+r.stock+'" data-i="'+i+'" aria-label="'+esc(L.thStock)+': '+nm+'"><button type="button" data-act="+" data-i="'+i+'" aria-label="+1 '+nm+'">+</button></span></td>'+
         '<td class="num">'+(r.coverCapped?"14+":r.cover)+'</td><td class="num">'+r.next7+'</td>'+
-        '<td class="num">'+(r.qty?'<b>'+r.qty+'</b>':'-')+'</td><td><span class="chip '+r.status+'">'+LABEL[r.status]+'</span></td></tr>';
+        '<td class="num">'+(r.qty?'<b>'+r.qty+'</b>':'<span class="none">'+L.none+'</span>')+'</td><td><span class="chip '+r.status+'">'+L[r.status]+'</span></td></tr>';
     });
     $("#rows").innerHTML=h;
   }
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-
+  function setStock(i,v){S.products[i].stock=Math.max(0,Math.round(v||0));resetAI();recalc(false);}
   $("#rows").addEventListener("click",function(e){
+    var b=e.target.closest("button[data-act]");
+    if(b){var i=+b.dataset.i;setStock(i,S.products[i].stock+(b.dataset.act==="+"?1:-1));return;}
     if(e.target.tagName==="INPUT")return;
     var tr=e.target.closest("tr"); if(!tr)return; state.sel=+tr.dataset.i;
     [].forEach.call($("#rows").children,function(x){x.setAttribute("aria-selected",x.dataset.i==state.sel)}); drawChart();
   });
-  $("#rows").addEventListener("change",function(e){
-    if(e.target.tagName!=="INPUT")return;
-    var i=+e.target.dataset.i, v=Math.max(0,Math.round(parseFloat(e.target.value)||0));
-    S.products[i].stock=v; state.ai=null; $("#aiOut").classList.add("hidden"); recalc(false);
-  });
+  $("#rows").addEventListener("change",function(e){if(e.target.tagName==="INPUT")setStock(+e.target.dataset.i,parseFloat(e.target.value));});
 
+  var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function dlabel(ms){var d=new Date(ms);return d.getUTCDate()+" "+MON[d.getUTCMonth()]}
   function drawChart(){
-    var p=S.products[state.sel], r=state.recs[state.sel], n=S.n, H=28;
-    $("#chartTitle").textContent=p.name;
-    var hist=p.y.slice(n-H), f=r.f7, Z=DD.Z, band=Z*r.sigma;
-    var W=680,Ht=260,pl=38,pr=10,pt=14,pb=30, N=H+7;
+    var L=t(),p=S.products[state.sel],r=state.recs[state.sel],n=S.n,H=28;
+    $("#chartTitle").textContent=dn(p.name);
+    var hist=p.y.slice(n-H),f=r.f7,band=DD.Z*r.sigma,W=680,Ht=270,pl=44,pr=12,pt=26,pb=34,N=H+7;
     var mx=Math.max.apply(null,hist.concat(f.map(function(v){return v+band})))*1.1||1;
     function X(i){return pl+i*(W-pl-pr)/(N-1)} function Y(v){return pt+(1-v/mx)*(Ht-pt-pb)}
-    var s="";
-    for(var g=0;g<=4;g++){var v=mx*g/4;s+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#e5dac3"/><text x="'+(pl-6)+'" y="'+(Y(v)+4)+'" font-size="11" text-anchor="end" fill="#6f5d5a">'+Math.round(v)+'</text>';}
-    var up=f.map(function(v,i){return X(H+i)+","+Y(v+band)}), lo=f.map(function(v,i){return X(H+i)+","+Y(Math.max(0,v-band))}).reverse();
+    var s='<text x="4" y="14" font-size="12" fill="#5f4e4b">'+L.yTitle+'</text>';
+    for(var g=0;g<=4;g++){var v=mx*g/4;s+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#e5dac3"/><text x="'+(pl-8)+'" y="'+(Y(v)+4)+'" font-size="12" text-anchor="end" fill="#5f4e4b">'+Math.round(v)+'</text>';}
+    var up=f.map(function(v,i){return X(H+i)+","+Y(v+band)}),lo=f.map(function(v,i){return X(H+i)+","+Y(Math.max(0,v-band))}).reverse();
     s+='<polygon points="'+up.concat(lo).join(" ")+'" fill="#e3d2a2" opacity=".8"/>';
     s+='<polyline fill="none" stroke="#5a1215" stroke-width="2.5" points="'+hist.map(function(v,i){return X(i)+","+Y(v)}).join(" ")+'"/>';
     s+='<polyline fill="none" stroke="#8a6d2f" stroke-width="2.5" stroke-dasharray="6 4" points="'+[hist[H-1]].concat(f).map(function(v,i){return X(H-1+i)+","+Y(v)}).join(" ")+'"/>';
     s+='<line x1="'+X(H-.5)+'" x2="'+X(H-.5)+'" y1="'+pt+'" y2="'+(Ht-pb)+'" stroke="#8a6d2f" stroke-dasharray="2 4"/>';
-    for(var i=0;i<N;i+=7){var d=i<H?S.dates[n-H+i]:S.dates[n-1]+DD.DAY*(i-H+1);var ds=DD.fmtDate(d).slice(5);s+='<text x="'+X(i)+'" y="'+(Ht-10)+'" font-size="11" text-anchor="middle" fill="#6f5d5a">'+ds+'</text>';}
+    [0,7,14,21,28,34].forEach(function(i){var d=i<H?S.dates[n-H+i]:S.dates[n-1]+DD.DAY*(i-H+1);
+      s+='<line x1="'+X(i)+'" x2="'+X(i)+'" y1="'+(Ht-pb)+'" y2="'+(Ht-pb+5)+'" stroke="#8a7a60"/><text x="'+X(i)+'" y="'+(Ht-10)+'" font-size="12" text-anchor="'+(i===34?'end':'middle')+'" fill="#5f4e4b">'+dlabel(d)+'</text>';});
     $("#chart").innerHTML=s;
-    $("#chart").setAttribute("aria-label","Sales of "+p.name+" for the last 28 days and forecast for the next 7 days");
+    $("#chart").setAttribute("aria-label",dn(p.name)+": "+L.lgSold+", "+L.lgFc);
   }
 
-  /* AI explanation with built-in template fallback */
+  /* AI explanation */
+  function resetAI(){$("#aiOut").classList.add("hidden");$("#aiEmpty").classList.remove("hidden");}
   function factsPayload(){
     var b=state.bt;
     return {language:state.lang,leadTimeDays:state.L,reviewEveryDays:state.R,horizonDays:7,
       backtest:{forecastErrorPct:Math.round(b.wapeModel*10)/10,oldRuleErrorPct:Math.round(b.wapeNaive*10)/10,fillRatePct:Math.round(b.model.fillRate*10)/10,oldRuleFillRatePct:Math.round(b.base.fillRate*10)/10},
-      products:state.recs.map(function(r){return{name:r.name,inStock:r.stock,lastsDays:r.coverCapped?14:r.cover,next7DaysUnits:r.next7,suggestedOrder:r.qty,status:r.status}})};
+      products:state.recs.map(function(r){return{name:dn(r.name),inStock:r.stock,lastsDays:r.coverCapped?14:r.cover,next7DaysUnits:r.next7,suggestedOrder:r.qty,status:r.status}})};
   }
   function template(){
-    var ur=state.lang==="roman_urdu", need=state.recs.filter(function(r){return r.status!=="ok"}).sort(function(a,b){return (a.status==="order_now"?0:1)-(b.status==="order_now"?0:1)});
-    var e,m;
-    if(!need.length){e=ur?"Abhi sab cheezein theek hain. Agle supplier visit tak stock chalna chahiye. Ye sirf andaza hai.":"Everything looks fine for now. Stock should last until your next supplier visit. This is an estimate only.";m="";}
-    else{
-      e=(ur?"Ye cheezein pehle mangwayen (ye sirf andaza hai):\n":"Order these first (this is an estimate only):\n")+need.map(function(r){
-        return "- "+r.name+": "+(ur?r.stock+" bacha hai, "+(r.coverCapped?"14+":r.cover)+" din chalega, "+r.qty+" mangwayen":r.stock+" left, lasts "+(r.coverCapped?"14+":r.cover)+" days, order "+r.qty);}).join("\n");
-      m=(ur?"Assalam o Alaikum, mujhe ye saman chahiye:\n":"Hello, I would like to order:\n")+need.map(function(r){return "- "+r.name+": "+r.qty}).join("\n")+(ur?"\nShukriya.":"\nThank you.");
-    }
-    return {explanation:e,supplier_message:m};
+    var L=t(),need=state.recs.filter(function(r){return r.status!=="ok"}).sort(function(a,b){return (a.status==="order_now"?0:1)-(b.status==="order_now"?0:1)});
+    if(!need.length)return{explanation:L.tmplOk,supplier_message:""};
+    return{explanation:L.tmplHead+need.map(function(r){return L.tmplLine(r,dn(r.name))}).join("\n"),
+      supplier_message:L.supHead+need.map(function(r){return "- "+dn(r.name)+": "+r.qty}).join("\n")+L.supTail};
   }
   function show(res){
-    $("#aiOut").classList.remove("hidden");
-    $("#exp").textContent=res.explanation; $("#sup").textContent=res.supplier_message||"Nothing to order right now.";
+    var L=t();
+    $("#aiEmpty").classList.add("hidden");$("#aiOut").classList.remove("hidden");
+    $("#exp").textContent=res.explanation;$("#sup").textContent=res.supplier_message||L.nothing;
     $("#wa").href="https://wa.me/?text="+encodeURIComponent(res.supplier_message||"");
     var s=$("#src");
-    if(res.source==="ai"){s.className="src ai";s.textContent="Written by "+res.model+" on AMD Token Factory, "+(res.latencyMs/1000).toFixed(1)+" s"+(res.usage&&res.usage.total_tokens?", "+res.usage.total_tokens+" tokens":"")+". Every number was checked against your data.";}
-    else{s.className="src";s.textContent=res.reason||"Built-in template (no AI).";}
+    if(res.source==="ai"){s.className="src ai";s.textContent=L.aiSrc(res.model,(res.latencyMs/1000).toFixed(1),res.usage&&res.usage.total_tokens);}
+    else{s.className="src";s.textContent=res.reason||"";}
   }
   $("#explain").addEventListener("click",function(){
-    var b=this; b.disabled=true; b.textContent="Writing...";
+    var b=this,L=t(); b.disabled=true; b.innerHTML='<span class="spin"></span>'+L.writing;
     fetch("/api/explain",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(factsPayload())})
       .then(function(r){return r.json()})
-      .then(function(d){ if(d.source==="ai") show(d); else { var t=template(); t.source="none"; t.reason=d.reason; show(t);} })
-      .catch(function(){ var t=template(); t.source="none"; t.reason="Could not reach the server. Showing the built-in template."; show(t); })
-      .then(function(){b.disabled=false;b.textContent="Explain and draft message";});
+      .then(function(d){ if(d.source==="ai") show(d); else { var x=template(); x.source="none"; x.reason=d.reason; show(x);} })
+      .catch(function(){ var x=template(); x.source="none"; x.reason=t().netfail; show(x); })
+      .then(function(){b.disabled=false;b.textContent=t().btnExplain;});
   });
-  $("#copy").addEventListener("click",function(){var t=$("#sup").textContent,b=this;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent="Copied"},function(){b.textContent="Select and copy manually"});setTimeout(function(){b.textContent="Copy message"},1800);});
+  $("#copy").addEventListener("click",function(){var tx=$("#sup").textContent,b=this,L=t();
+    (navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).then(function(){b.textContent=L.copied},function(){b.textContent=L.copyFail});
+    setTimeout(function(){b.textContent=t().copy},1800);});
 
   /* wiring */
   function today(){var d=new Date();return Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-DD.DAY;}
@@ -352,17 +441,17 @@ footer b{color:var(--gold)}
   $("#pickFile").addEventListener("click",function(){$("#file").click()});
   $("#file").addEventListener("change",function(){
     var f=this.files[0]; if(!f)return;
-    if(f.size>5e6){msg("That file is over 5 MB. Please upload a smaller CSV.","err");return;}
-    var rd=new FileReader(); rd.onload=function(){try{var p=DD.parseCSV(String(rd.result));load(p.rows,false,p.skipped);}catch(e){msg(e.message,"err");}}; rd.readAsText(f);
+    if(f.size>5e6){state.loaded=null;msg(t().big,"err");return;}
+    var rd=new FileReader(); rd.onload=function(){try{var p=DD.parseCSV(String(rd.result));load(p.rows,false,p.skipped);}catch(e){state.loaded=null;msg(e.message,"err");}}; rd.readAsText(f);
     this.value="";
   });
   $("#dlSample").addEventListener("click",function(){
     var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([DD.toCSV(DD.makeSample(today()))],{type:"text/csv"}));a.download="dukaan-dost-sample.csv";a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},2000);
   });
-  ["#lead","#rev"].forEach(function(id){$(id).addEventListener("change",function(){state.ai=null;$("#aiOut").classList.add("hidden");recalc(true)})});
-  function setLang(l){state.lang=l;$("#lu").setAttribute("aria-pressed",l==="roman_urdu");$("#le").setAttribute("aria-pressed",l==="english");}
+  ["#lead","#rev"].forEach(function(id){$(id).addEventListener("change",function(){resetAI();recalc(true)})});
   $("#lu").addEventListener("click",function(){setLang("roman_urdu")});
   $("#le").addEventListener("click",function(){setLang("english")});
+  applyStatic();
 })();
 </script>
 </body>
