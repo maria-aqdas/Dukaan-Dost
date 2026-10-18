@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dukaan Dost: stock forecasting for kiryana shops</title>
 <meta name="description" content="Upload your daily sales. Dukaan Dost forecasts the next 7 days, flags what will run out, and drafts the supplier message.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#5a1215">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -75,7 +79,7 @@ main{padding:30px 24px 40px}
 .note{font-size:13px;color:var(--muted);margin-top:12px;max-width:80ch}
 
 .tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:680px}
+table{border-collapse:collapse;width:100%;min-width:780px}
 th{font-size:13px;text-align:left;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:2px solid var(--line)}
 td{padding:10px;border-bottom:1px solid var(--line);font-size:15px}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
@@ -118,9 +122,43 @@ svg.chart{width:100%;height:auto;display:block}
 footer{background:var(--maroon-deep);color:#e6d6b4;padding:30px 0;font-size:14px}
 footer b{color:var(--gold)}
 
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:44px;height:44px;border-radius:10px}
+.logo{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;max-width:280px;justify-self:end;border-radius:28px;box-shadow:0 12px 34px rgba(0,0,0,.35);border:2px solid rgba(224,191,106,.5)}
+tbody tr[aria-selected=true]{box-shadow:inset 5px 0 0 var(--maroon)}
+tbody tr:active{background:#ecdcb6}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 16px}
+.sum>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.sum .k{font-size:13px;color:var(--muted)}
+.sum .v{font-family:"Bebas Neue";font-size:30px;line-height:1.15;color:var(--maroon)}
+.sum .s{font-size:12px;color:var(--muted)}
+.cost{width:84px;border:2px solid #b9a98a;border-radius:8px;padding:6px 8px;font:inherit;text-align:right;background:#fff}
+.cost:focus{outline:0;border-color:var(--maroon)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.tools .btn{font-size:18px;padding:7px 18px}
+.wa{background:#1f7a3d!important;border-color:#1f7a3d!important;color:#fff!important}
+.wa:hover{background:#18612f!important}
+.author{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.author h4{font-family:"Bebas Neue";font-size:26px;font-weight:400;letter-spacing:.03em;color:var(--gold);margin:0 0 4px}
+.author p{margin:2px 0}
+.author a{color:#f0d58a}
+.links a+a::before{content:"\00b7";margin:0 8px;color:#bfa66a}
+#slip{display:none}
+@media print{
+  body *{visibility:hidden}
+  #slip,#slip *{visibility:visible}
+  #slip{display:block;position:absolute;left:0;top:0;width:100%;padding:24px;color:#000;font-family:Inter,Arial,sans-serif}
+  #slip h2{font-family:Inter,Arial,sans-serif;font-size:22px;color:#000;margin:0 0 4px}
+  #slip table{min-width:0;width:100%;border-collapse:collapse;margin-top:14px}
+  #slip th,#slip td{border:1px solid #444;padding:7px 9px;font-size:14px;color:#000}
+  #slip .box{display:inline-block;width:16px;height:16px;border:2px solid #000;vertical-align:middle}
+  #slip .tot td{font-weight:700}
+  #slip p{font-size:12px;margin:10px 0 0}
+}
 @media (max-width:860px){
   .hero-grid{grid-template-columns:1fr;gap:24px}
-  #tree{max-width:200px;justify-self:start}
+  .logo{max-width:180px;justify-self:start}
+  .sum{grid-template-columns:1fr 1fr}
   .nav nav{display:none}
   .stats{grid-template-columns:1fr 1fr}
   .two,.how{grid-template-columns:1fr}
@@ -134,7 +172,7 @@ footer b{color:var(--gold)}
 <header class="hero">
   <div class="wrap">
     <div class="nav">
-      <div class="brand">Dukaan <b>Dost</b></div>
+      <div class="brand"><img src="/icon-192.png" alt="" width="44" height="44"><span>Dukaan <b>Dost</b></span></div>
       <nav aria-label="Sections"><a href="#shop" data-i="navShop"></a><a href="#how" data-i="navHow"></a><a href="#limits" data-i="navLim"></a></nav>
     </div>
     <div class="hero-grid">
@@ -147,7 +185,7 @@ footer b{color:var(--gold)}
           <input type="file" id="file" accept=".csv,text/csv" class="hidden">
         </div>
       </div>
-      <svg id="tree" viewBox="0 0 400 400" role="img" aria-label="A tree with colourful leaves"></svg>
+      <img class="logo" src="/logo.png" width="512" height="512" alt="Dukaan Dost logo: a corner shop with a growth arrow and leaves">
     </div>
   </div>
 </header>
@@ -179,8 +217,10 @@ footer b{color:var(--gold)}
     <section class="card" aria-labelledby="h-fc">
       <h2 id="h-fc" data-i="hFc"></h2>
       <p class="lead" data-i="fcLead"></p>
+      <div class="sum" id="sum"></div>
+      <div class="tools"><button class="btn dark" id="print" data-i="print"></button><span class="none" data-i="costNote"></span></div>
       <div class="tbl"><table>
-        <thead><tr><th data-i="thProd"></th><th class="num" data-i="thStock"></th><th class="num" data-i="thLasts"></th><th class="num" data-i="thNext"></th><th class="num" data-i="thOrder"></th><th data-i="thStatus"></th></tr></thead>
+        <thead><tr><th data-i="thProd"></th><th class="num" data-i="thStock"></th><th class="num" data-i="thLasts"></th><th class="num" data-i="thNext"></th><th class="num" data-i="thOrder"></th><th class="num" data-i="thCost"></th><th data-i="thStatus"></th></tr></thead>
         <tbody id="rows"></tbody>
       </table></div>
       <div class="chartbox"><h3 id="chartTitle"></h3><svg class="chart" id="chart" viewBox="0 0 680 270" role="img"></svg>
@@ -220,12 +260,24 @@ footer b{color:var(--gold)}
   </section>
 </main>
 
-<footer><div class="wrap"><b>Dukaan Dost</b>. <span data-i="foot"></span></div></footer>
+<div id="slip" aria-hidden="true"></div>
+<footer><div class="wrap">
+  <div class="author">
+    <div>
+      <h4>Dukaan Dost</h4>
+      <p><span data-i="by"></span> <b>Maria Aqdas</b></p>
+      <p class="links" id="links"></p>
+    </div>
+    <div style="max-width:520px"><p data-i="foot"></p></div>
+  </div>
+</div></footer>
 
 <script src="engine.js"></script>
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
+  /* Fill these in with your real links; empty ones are hidden. */
+  var LINKS={GitHub:"",LinkedIn:"",Kaggle:"",Code:""};
   var DD=window.DD, S=null, state={L:2,R:3,lang:"english",sel:0,recs:[],bt:null,loaded:null};
 
   var T={
@@ -262,7 +314,11 @@ footer b{color:var(--gold)}
     tmplOk:"Everything looks fine for now. Stock should last until your next supplier visit. This is an estimate only.",tmplHead:"Order these first (this is an estimate only):\n",
     tmplLine:function(r,n){return "- "+n+": "+r.stock+" left, lasts "+(r.coverCapped?"14+":r.cover)+" days, order "+r.qty},
     supHead:"Hello, I would like to order:\n",supTail:"\nThank you.",
-    netfail:"Could not reach the server. Showing the built-in template."
+    netfail:"Could not reach the server. Showing the built-in template.",
+    print:"Print restock slip",costNote:"Optional: add a unit cost to see the order total. Sample prices are illustrative.",thCost:"Unit cost (PKR)",
+    sumCrit:"Running out before delivery",sumItems:"Products to order",sumUnits:"Units to order",sumCost:"Estimated order cost",sumNone:"Add unit costs below",sumPart:function(n){return n+" without a cost"},
+    slipTitle:"Restock slip",slipTotal:"Total",slipNote:"Quantities are estimates from past sales. Check the shelf before ordering.",
+    by:"Developed by"
    },
    roman_urdu:{
     top:"AMD Developer Hackathon ACT III ke liye banaya gaya, Commerce track",navShop:"Meri dukaan",navHow:"Kaise kaam karta hai",navLim:"Hadood",
@@ -297,22 +353,17 @@ footer b{color:var(--gold)}
     tmplOk:"Abhi sab theek hai. Agle supplier visit tak stock chalna chahiye. Ye sirf andaza hai.",tmplHead:"Ye cheezein pehle mangwayen (ye sirf andaza hai):\n",
     tmplLine:function(r,n){return "- "+n+": "+r.stock+" bacha hai, "+(r.coverCapped?"14+":r.cover)+" din chalega, "+r.qty+" mangwayen"},
     supHead:"Assalam o Alaikum, mujhe ye saman chahiye:\n",supTail:"\nShukriya.",
-    netfail:"Server tak nahi pahunch saka. Built-in template dikha rahe hain."
+    netfail:"Server tak nahi pahunch saka. Built-in template dikha rahe hain.",
+    print:"Restock parchi print karein",costNote:"Zaroori nahi: order ka total dekhne ke liye har cheez ki qeemat likhein. Sample qeematein sirf misaal hain.",thCost:"Qeemat (PKR)",
+    sumCrit:"Delivery se pehle khatam hone wali",sumItems:"Mangwane wali cheezein",sumUnits:"Mangwane ke units",sumCost:"Order ka andazan kharch",sumNone:"Neeche qeematein likhein",sumPart:function(n){return n+" ki qeemat nahi likhi"},
+    slipTitle:"Restock parchi",slipTotal:"Total",slipNote:"Miqdar pichli sales ka andaza hai. Order se pehle shelf dekh lein.",
+    by:"Developer:"
    }
   };
   var NAMES_UR={"Milk 1L":"Doodh 1L","Eggs (dozen)":"Anda (darjan)","Yogurt 500g":"Dahi 500g","Tea leaves 190g":"Chai patti 190g","Flour (atta) 10kg":"Atta 10kg","Sugar 1kg":"Cheeni 1kg"};
   function t(){return T[state.lang]}
   function dn(n){return state.lang==="roman_urdu"&&NAMES_UR[n]?NAMES_UR[n]:n}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-
-  /* leaf tree */
-  (function(){
-    var r=(function(s){return function(){s=(s*16807)%2147483647;return s/2147483647}})(11), cols=["#e8294a","#f5a623","#7cb342","#1fa2b8","#6a3fa0"], out="";
-    for(var i=0;i<78;i++){var a=r()*Math.PI*2, d=Math.sqrt(r())*150, x=200+Math.cos(a)*d, y=165+Math.sin(a)*d*.95, rot=a*180/Math.PI+90;
-      out+='<ellipse cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" rx="7" ry="19" fill="'+cols[i%5]+'" transform="rotate('+rot.toFixed(0)+' '+x.toFixed(1)+' '+y.toFixed(1)+')"/>';}
-    out+='<path d="M200 392 C196 340 168 308 118 276 C160 292 188 296 200 284 C212 296 240 292 282 276 C232 308 204 340 200 392Z" fill="#161010"/><circle cx="200" cy="266" r="13" fill="#161010"/>';
-    $("#tree").innerHTML=out;
-  })();
 
   /* language */
   function applyStatic(){
@@ -324,14 +375,14 @@ footer b{color:var(--gold)}
   }
   function setLang(l){
     if(state.lang===l)return; state.lang=l; applyStatic(); resetAI();
-    if(S){drawStats();drawRows();drawChart();} if(state.loaded) msg(state.loaded(),"ok");
+    if(S){drawStats();drawRows();drawChart();drawSum();} if(state.loaded) msg(state.loaded(),"ok");
   }
   function msg(txt,cls){var e=$("#status");e.className="msg "+cls;e.textContent=txt;}
 
   function load(rows,sample,skipped){
     try{
       S=DD.buildSeries(rows);
-      if(sample){var f=[.8,2.5,4,1.5,5,2.2,3.5,1.1,6];S.products.forEach(function(p,i){var avg=p.y.slice(-14).reduce(function(a,b){return a+b},0)/14;p.stock=Math.round(avg*f[i%f.length]);});}
+      if(sample){var PR={"Milk 1L":230,"Eggs (dozen)":380,"Yogurt 500g":170,"Tea leaves 190g":400,"Cooking oil 1L":520,"Flour (atta) 10kg":1650,"Sugar 1kg":170,"Cold drink 1.5L":180,"Biscuit pack":60};var f=[.8,2.5,4,1.5,5,2.2,3.5,1.1,6];S.products.forEach(function(p,i){p.cost=PR[p.name]||0;var avg=p.y.slice(-14).reduce(function(a,b){return a+b},0)/14;p.stock=Math.round(avg*f[i%f.length]);});}
       state.sel=0;resetAI();
       $("#empty").classList.add("hidden");$("#app").classList.remove("hidden");
       var n=S.products.length,d=S.n; state.loaded=function(){return t().loaded(n,d,sample,skipped)};
@@ -344,7 +395,7 @@ footer b{color:var(--gold)}
     state.L=Math.min(7,Math.max(1,parseInt($("#lead").value)||2)); state.R=Math.min(7,Math.max(1,parseInt($("#rev").value)||3));
     if(full) state.bt=DD.backtest(S,state.R,state.L);
     state.recs=S.products.map(function(p){return DD.recommend(S,p,state.R,state.L)});
-    drawStats();drawRows();drawChart();
+    drawStats();drawRows();drawChart();drawSum();
   }
   function pct(v){return v.toFixed(1)+"%"}
   function drawStats(){
@@ -365,7 +416,7 @@ footer b{color:var(--gold)}
       h+='<tr data-i="'+i+'" aria-selected="'+(i===state.sel)+'"><td><b>'+nm+'</b></td>'+
         '<td class="num"><span class="step"><button type="button" data-act="-" data-i="'+i+'" aria-label="-1 '+nm+'">&minus;</button><input type="number" min="0" value="'+r.stock+'" data-i="'+i+'" aria-label="'+esc(L.thStock)+': '+nm+'"><button type="button" data-act="+" data-i="'+i+'" aria-label="+1 '+nm+'">+</button></span></td>'+
         '<td class="num">'+(r.coverCapped?"14+":r.cover)+'</td><td class="num">'+r.next7+'</td>'+
-        '<td class="num">'+(r.qty?'<b>'+r.qty+'</b>':'<span class="none">'+L.none+'</span>')+'</td><td><span class="chip '+r.status+'">'+L[r.status]+'</span></td></tr>';
+        '<td class="num">'+(r.qty?'<b>'+r.qty+'</b>':'<span class="none">'+L.none+'</span>')+'</td><td class="num"><input class="cost" type="number" min="0" step="1" data-cost="'+i+'" value="'+(S.products[i].cost||'')+'" placeholder="PKR" aria-label="'+esc(L.thCost)+': '+nm+'"></td><td><span class="chip '+r.status+'">'+L[r.status]+'</span></td></tr>';
     });
     $("#rows").innerHTML=h;
   }
@@ -377,7 +428,9 @@ footer b{color:var(--gold)}
     var tr=e.target.closest("tr"); if(!tr)return; state.sel=+tr.dataset.i;
     [].forEach.call($("#rows").children,function(x){x.setAttribute("aria-selected",x.dataset.i==state.sel)}); drawChart();
   });
-  $("#rows").addEventListener("change",function(e){if(e.target.tagName==="INPUT")setStock(+e.target.dataset.i,parseFloat(e.target.value));});
+  $("#rows").addEventListener("change",function(e){
+    if(e.target.dataset.cost!==undefined){S.products[+e.target.dataset.cost].cost=Math.max(0,parseFloat(e.target.value)||0);drawSum();return;}
+    if(e.target.tagName==="INPUT")setStock(+e.target.dataset.i,parseFloat(e.target.value));});
 
   var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   function dlabel(ms){var d=new Date(ms);return d.getUTCDate()+" "+MON[d.getUTCMonth()]}
@@ -399,6 +452,32 @@ footer b{color:var(--gold)}
     $("#chart").innerHTML=s;
     $("#chart").setAttribute("aria-label",dn(p.name)+": "+L.lgSold+", "+L.lgFc);
   }
+
+  function fmt(n){return Math.round(n).toLocaleString("en-US")}
+  function totals(){
+    var need=state.recs.filter(function(r){return r.qty>0}),units=0,cost=0,priced=0;
+    need.forEach(function(r,i){units+=r.qty;var c=S.products[state.recs.indexOf(r)].cost;if(c>0){cost+=c*r.qty;priced++;}});
+    return{need:need,units:units,cost:cost,priced:priced,critical:state.recs.filter(function(r){return r.status==="order_now"}).length};
+  }
+  function drawSum(){
+    var L=t(),o=totals();
+    $("#sum").innerHTML=
+      '<div><div class="k">'+L.sumCrit+'</div><div class="v">'+o.critical+'</div></div>'+
+      '<div><div class="k">'+L.sumItems+'</div><div class="v">'+o.need.length+'</div></div>'+
+      '<div><div class="k">'+L.sumUnits+'</div><div class="v">'+fmt(o.units)+'</div></div>'+
+      '<div><div class="k">'+L.sumCost+'</div><div class="v">'+(o.priced?'PKR '+fmt(o.cost):'-')+'</div><div class="s">'+(o.priced?(o.priced<o.need.length?L.sumPart(o.need.length-o.priced):''):L.sumNone)+'</div></div>';
+  }
+  function buildSlip(){
+    var L=t(),o=totals(),d=new Date(),ds=d.getDate()+" "+MON[d.getMonth()]+" "+d.getFullYear();
+    var rows=o.need.map(function(r){var c=S.products[state.recs.indexOf(r)].cost;
+      return '<tr><td><span class="box"></span></td><td>'+esc(dn(r.name))+'</td><td style="text-align:right"><b>'+r.qty+'</b></td><td style="text-align:right">'+(c>0?fmt(c*r.qty):'')+'</td></tr>';}).join("");
+    $("#slip").innerHTML='<h2>Dukaan Dost: '+L.slipTitle+'</h2><div>'+ds+'</div>'+
+      (o.need.length?'<table><thead><tr><th style="width:30px"></th><th style="text-align:left">'+L.thProd+'</th><th style="text-align:right">'+L.thOrder+'</th><th style="text-align:right">PKR</th></tr></thead><tbody>'+rows+
+      '<tr class="tot"><td></td><td>'+L.slipTotal+'</td><td style="text-align:right">'+fmt(o.units)+'</td><td style="text-align:right">'+(o.priced?fmt(o.cost):'')+'</td></tr></tbody></table>':'<p>'+L.nothing+'</p>')+
+      '<p>'+L.slipNote+'</p>';
+  }
+  $("#print").addEventListener("click",function(){buildSlip();window.print();});
+  window.addEventListener("beforeprint",function(){if(S)buildSlip();});
 
   /* AI explanation */
   function resetAI(){$("#aiOut").classList.add("hidden");$("#aiEmpty").classList.remove("hidden");}
@@ -451,6 +530,7 @@ footer b{color:var(--gold)}
   ["#lead","#rev"].forEach(function(id){$(id).addEventListener("change",function(){resetAI();recalc(true)})});
   $("#lu").addEventListener("click",function(){setLang("roman_urdu")});
   $("#le").addEventListener("click",function(){setLang("english")});
+  $("#links").innerHTML=Object.keys(LINKS).filter(function(k){return LINKS[k]}).map(function(k){return '<a href="'+esc(LINKS[k])+'" target="_blank" rel="noopener noreferrer">'+k+'</a>'}).join("");
   applyStatic();
 })();
 </script>
