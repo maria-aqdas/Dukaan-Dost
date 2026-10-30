@@ -56,7 +56,7 @@ The forecasting and restocking calculations run through regular code, while AI h
 Dukaan Dost uses a static website and one serverless function, so no frontend build step is required.
 
 ### 1. Install dependencies
-
+        
 Make sure Node.js and npm are installed, then run:
 
 ```bash
