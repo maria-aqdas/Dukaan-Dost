@@ -1,6 +1,6 @@
 # 🛒 Dukaan Dost
                                         
-### 📊 Your Smart Stock & Restocking Assistant for Kiryana Shops 🇵🇰                       
+### 📊 Your Smart Stock & Restocking Assistant for Kiryana Shops 🇵🇰                             
               
 Dukaan Dost helps small shop owners manage their stock, predict future product demand, and decide when and how much to restock.
 
